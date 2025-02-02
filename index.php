@@ -1,5 +1,5 @@
 
-<?php include 'header.php';?>
+<?php include './header.php'?>
 
      <!------- POPUP WINDOW START ------->
      <div id="popup" class="popup">
@@ -942,7 +942,5 @@
                 </div>
             </div>
         </section>
-       <!---------  LATEST NEWS SECTION END --------->
-        <!--------- FOOTER SECTION START --------->
-       <?php include 'footer.php'; ?>
-        <!--------- FOOTER SECTION END --------->
+       <!--  LATEST NEWS SECTION END -->
+         <?php include "./footer.php"?>
