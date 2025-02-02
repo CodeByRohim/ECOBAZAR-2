@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>EcoBazar</title>
-   <link rel="shortcut icon" href="./images/Logo.svg" type="image/x-icon">
-   <link rel="stylesheet" href="./css/all.min.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-   <link rel="stylesheet" href="./css/bootstrap.min.css">
-   <link rel="stylesheet" href="./css/slick.css">
-   <link rel="stylesheet" href="./css/styles.css"> 
-   <link rel="stylesheet" href="./css/contact.css">
-   <link rel="stylesheet" href="./css/responsive.css"> 
-   <link rel="stylesheet" href="./css/newsletter and footer.css">
-</head>
 
-<body>
-     <?php include 'header.php';?>
-    <!-- *Main PART START HERE -->
-     <main>
+    <?php
+     session_start(); 
+     include './header.php';
+     ?>
+     
               <!-- *Breadcrumbs Start Here -->
       <section id="Breadcrumbs">
         <div class="container">
@@ -71,17 +56,38 @@
                 <div class="col-lg-9 col-12 rightSide">
                     <div class="formCnt">
                         <div class="formd">
+                            <span class="alert-box alert alert-warning alert-dismissible fade <?= getShowClass('show') ?>" role="alert">
+                                <strong><?= $_SESSION['success'] ?? '' ?></strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i class="fa-solid fa-x"></i></button>
+                            </span>
                             <h4>Just Say Hello!</h4>
                             <p>Do you fancy saying hi to me or you want to get started with your project and you need my help? Feel free to contact me.</p>
-                            <form action="">
+
+                             <form action="./controller/ContactStoreController.php" method="POST">
                                 <div class="d-flex">
-                                    <input type="text" placeholder="Full Name">
-                                    <input type="email" placeholder="youremail@gmail.com">
+                                    <div class="error-box-parent">
+                                        <input class="form-control <?= getErrorClass('fname_error') ?>" value="<?= $_SESSION['old']['fname'] ?? '' ?>" name="fname" type="text" placeholder="Full Name">
+                                        <span class="<?= getActiveClass('fname_error') ?> error-box"><?= $_SESSION['errors']['fname_error'] ?? '' ?></span>
+                                    </div>
+
+                                    <div class="error-box-parent">
+                                        <input class="form-control <?= getErrorClass('email_error') ?>" value="<?= $_SESSION['old']['email'] ?? null ?>" name="email" type="email" placeholder="youremail@gmail.com">
+                                        <span class="<?= getActiveClass('email_error') ?> error-box"><?= $_SESSION['errors']['email_error'] ?? '' ?></span>
+                                    </div>
+
                                 </div>
-                                <input class="sub" type="text" placeholder="Subject">
-                                <textarea name="" id="" placeholder="Message"></textarea>
-                                <button>Send Message</button>
-                            </form>
+                                <div class="error-box-parent">
+                                    <input class="sub form-control <?= getErrorClass('subject_error') ?>" value="<?= $_SESSION['old']['subject'] ?? null ?>" name="subject" type="text" placeholder="Subject">
+                                    <span class="<?= getActiveClass('subject_error') ?> error-box"><?= $_SESSION['errors']['subject_error'] ?? '' ?></span>
+                                </div>
+
+                                <div class="error-box-parent">
+                                    <textarea class="form-control <?= getErrorClass('subject_error') ?>" name="message" id="" placeholder="Message"><?= $_SESSION['old']['message'] ?? null ?></textarea>
+                                    <span class="<?= getActiveClass('message_error') ?> error-box"><?= $_SESSION['errors']['message_error'] ?? '' ?></span>
+                                </div>
+
+                                <button type="submit">Send Message</button>
+                            </form> 
                         </div>
                     </div>
                 </div>
@@ -93,18 +99,14 @@
       <!-- *Map Section start -->
      <section id="Map">
          <div class="containe">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.8700197525127!2d91.83677857434643!3d22.35853624078379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ad277ab0cff8a7%3A0x13eb8ccef8a22dde!2sCreative%20IT%20Institute%2C%20Chattogram%20Branch!5e0!3m2!1sen!2sbd!4v1733474173038!5m2!1sen!2sbd" width="100%" height="400px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.8700197525127!2d91.83677857434643!3d22.35853624078379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30ad277ab0cff8a7%3A0x13eb8ccef8a22dde!2sCreative%20IT%20Institute%2C%20Chattogram%20Branch!5e0!3m2!1sen!2sbd!4v1733474173038!5m2!1sen!2sbd" width="100%" height="400px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
          </div>
      </section>
      <!-- *Map Section end -->
 
-     <?php include 'footer.php';?>
-   <!-- *MAIN PART END HERE -->
-
-   <script src="./js/bootstrap.bundle.min.js"></script>
-   <script src="./js/jquery-3.7.1.min.js"></script>
-   <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-   <script src="./js/slick.min.js"></script>
-   <script src="./js/app.js"></script>
-   </body>
-   </html>
+     <?php
+      include './footer.php';
+       session_unset(); 
+     ?>
+  

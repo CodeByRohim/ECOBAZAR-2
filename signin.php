@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
@@ -19,7 +19,7 @@
    <link rel="stylesheet" href="./css/newsletter and footer.css">
 </head>
 
-<body>
+<body> -->
 <?php include 'header.php';?>
     <!-- *Main PART START HERE -->
      <main>

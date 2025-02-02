@@ -575,7 +575,7 @@
   #latestNews .latestNewsBox .childBox .text {
     position: absolute;
     left: 20px;
-    top: 140px;
+    /* top: 140px; */
     border-radius: 4px;
     padding: 6px 15px 10px 15px;
     width: 55px;

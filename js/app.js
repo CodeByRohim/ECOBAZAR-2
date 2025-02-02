@@ -96,12 +96,11 @@ $(window).on("load", function () {
   $("#preloader").fadeOut(1500);
 });
 
-
 // BACK TO TOP BUTTON
-
 $("#backToTop").click(function () {
   $("html,body").animate({ scrollTop: 0 }, 500);
 });
+
 //  back to top button show/hide
 $(window).scroll(function () {
   let scrollTop = $(window).scrollTop();
@@ -247,3 +246,130 @@ $(document).ready(function() {
   });
 });
 };
+
+
+// SHOP PAGE FILTER
+let faqs = document.querySelectorAll(".faq");
+function toggleFAQ(event){
+for (faq of faqs){
+   faq.classList.remove('active');
+}
+event.currentTarget.classList.toggle("active");
+}
+for (faq of faqs){
+faq.addEventListener('click',toggleFAQ);
+}
+
+// PRICE RANGE START
+const rangeInput = document.querySelectorAll(".range-input input"),
+  priceInput = document.querySelectorAll(".price-input input"),
+  range = document.querySelector(".slider .progress");
+let priceGap = 1000;
+
+priceInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minPrice = parseInt(priceInput[0].value),
+      maxPrice = parseInt(priceInput[1].value);
+
+    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+      if (e.target.className === "input-min") {
+        rangeInput[0].value = minPrice;
+        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+      } else {
+        rangeInput[1].value = maxPrice;
+        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+      }
+    }
+  });
+});
+
+rangeInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minVal = parseInt(rangeInput[0].value),
+      maxVal = parseInt(rangeInput[1].value);
+
+    if (maxVal - minVal < priceGap) {
+      if (e.target.className === "range-min") {
+        rangeInput[0].value = maxVal - priceGap;
+      } else {
+        rangeInput[1].value = minVal + priceGap;
+      }
+    } else {
+      priceInput[0].value = minVal;
+      priceInput[1].value = maxVal;
+      range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+      range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+    }
+  });
+});
+
+// PRICE RANGE END
+// FILTER START
+if (document.getElementById('shopFilter')){
+const toggleButton = document.getElementById("toggleButton");
+const leftContent = document.getElementById("leftContent");
+const leftHeader = document.getElementById("leftHeader");
+leftHeader.addEventListener("click", () => {
+    leftContent.classList.remove("show");
+});
+toggleButton.addEventListener("click", () => {
+    leftContent.classList.toggle("show");
+});
+};
+// NEWSLETTER CSS CHANGE FOR INDEX PAGE
+if (window.location.pathname.includes("index.php")) {
+  if (document.getElementById("newsletter")) {
+    const element = document.getElementById("newsletter");
+    element.style.padding = "345px 0px 40px 0px";
+  }
+}
+
+// PASSWORD TOGGLE FOR DASHBOARD
+// if (window.location.pathname.includes("dashboard.php")){
+let passwordTogglers = document.querySelectorAll(".passwordToggler");
+function passwordShow(event) {
+    let toggler = event.currentTarget;
+    let passwordInput = toggler.closest(".formGroup").querySelector(".password");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggler.innerHTML = '<i class="bi bi-eye"></i>';
+    } else {
+        passwordInput.type = "password";
+        toggler.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    }
+}
+passwordTogglers.forEach(toggler => {
+    toggler.addEventListener("click", passwordShow);
+});
+// };
+
+// SAME PAGE LINK 
+
+// Select all links targeting the #v-pills-settings tab
+document.querySelectorAll('a[href="#v-pills-settings"]').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+      e.preventDefault(); 
+
+      var myTabTrigger = new bootstrap.Tab(document.querySelector('#v-pills-settings-tab'));
+      var myTab = new bootstrap.Tab(document.querySelector('#v-pills-settings'));
+      
+      myTabTrigger.show();
+      myTab.aria-selected(true);
+  });
+});
+// SAME PAGE LINK END
+
+// FORM VALIDATION ONCE
+// Select all forms with the class 'validation-form'
+// document.querySelectorAll('.validation-form').forEach(function (form) {
+//   form.addEventListener('submit', function (e) {
+      
+
+//       // Perform validation only for the current form
+//       const inputs = form.querySelectorAll('input');
+//       let isValid = true;
+
+     
+//   });
+// });
+

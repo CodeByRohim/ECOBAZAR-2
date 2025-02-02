@@ -1,3 +1,47 @@
+  <?php 
+function getErrorClass($errors): string {
+    return isset($_SESSION['errors'][$errors]) ? 'is-invalid' : '';
+}
+?>
+  <?php 
+function getActiveClass($errors): string {
+    return isset($_SESSION['errors'][$errors]) ? 'active' : '';
+}
+?>    
+<?php 
+function getShowClass(): string {
+    return isset($_SESSION['success']) ? 'show' : '';
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoBazar</title>
+    <link rel="shortcut icon" href="./assets/img/fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/slick.css">
+    <link rel="stylesheet" href="./css/venobox.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="./css/productDetails.css">
+    <link rel="stylesheet" href="./css/checkout.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/shop.css">
+    <link rel="stylesheet" href="./css/shopping cart.css">
+    <link rel="stylesheet" href="./css/sign and sign up.css">
+    <link rel="stylesheet" href="./css/wishlist.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/error.css">
+    <link rel="stylesheet" href="./css/valid.css">
+    <link rel="stylesheet" href="./css/blog.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/newsletter and footer.css">
+</head>
+<body>
 
     <!-- PRELOADER START HERE -->
     <div id="preloader">
@@ -384,3 +428,4 @@
         <!-- SM BOTTOM NAVBAR END HERE -->
     </header>
     <!-- HEADER ENDS HERE -->
+     <main>

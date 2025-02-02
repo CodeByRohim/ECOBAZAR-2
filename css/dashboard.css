@@ -63,12 +63,12 @@ margin-left: 20px;
 }
 #dashboard .navi-parent button.active{
   box-shadow: inset 3px 0 0 0 #20b526;
-background: var(--gren-gray-scale-50);
-font-family: var(--font-family);
-font-weight: 400;
-font-size: 16px;
-line-height: 150%;
-color: var(--gray-scale-gray-–-900);
+  background: var(--gren-gray-scale-50);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--gray-scale-gray-–-900);
 
 }
 
@@ -309,6 +309,7 @@ padding: 16px 24px;
    justify-content: space-between;
 }
 #dashboard .settings .accountSettings .formWrapper .form-group label{
+  display: block;
   margin: 16px 0 6px 0;
   font-weight: 400;
   font-size: 14px;
@@ -320,6 +321,7 @@ padding: 16px 24px;
   border-radius: 6px;
   padding: 14px 16px;
   max-width: 512px;
+  width: 512px;
   height: 49px;
   background: var(--gray-scale-white);
   box-shadow: none;

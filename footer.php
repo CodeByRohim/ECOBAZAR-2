@@ -1,5 +1,5 @@
  <!-- NEWSLETTER SECTION START -->
- <section id="newsletter">
+        <section id="newsletter">
             <div class="container">
                 <div class="cntWrapper">
                     <div class="row align-items-center">
@@ -18,13 +18,12 @@
                                 <button type="submit">Subscribe</button>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
         <!-- NEWSLETTER SECTION END -->
-        <!-- LATEST NEWS SECTION END -->
+        
         <!-- FOOTER SECTION START -->
         <section id="footer">
             <footer>
@@ -118,5 +117,17 @@
             </footer>
         </section>
         <!-- FOOTER SECTION END -->
-           
+        </main>
+       
+       <script src="./js/bootstrap.bundle.min.js"></script>
+       <script src="./js/jquery-3.7.1.min.js"></script>
+       <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+       <script src="./js/slick.min.js"></script>
+       <script src="./js/mixitup.min.js"></script>
+       <script type="text/javascript" src="./js/venobox.min.js"></script>
+       <script src="./js/jquery.countdown.min.js"></script>
+       <script src="./js/app.js"></script>
+   </body>
+   </html>
+
    

@@ -1,0 +1,54 @@
+
+#details .form-control.is-invalid,
+#dashboard #accountForm .form-control.is-invalid {
+  border: #d31625 solid 1px !important;
+  box-shadow: none !important;
+}
+#details .error-box-parent,
+#dashboard #accountForm .error-box-parent{
+  position: relative;
+}
+#details .error-box-parent  .active.error-box,
+#dashboard #accountForm .error-box-parent .active.error-box{
+  visibility: visible;
+  opacity: 1;
+}
+#details .error-box-parent .error-box,
+ #dashboard #accountForm .error-box-parent .error-box{
+  visibility: hidden;
+  position: absolute;
+  width: clamp(50px, 100%, 150px);
+  padding: 0px 4px 2px 4px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--gray-scale-gray-–-800);
+  background-color: var(--gray-scale-gray-–-50);
+  z-index: 1;
+  font-size: 14px;
+  font-style: italic;
+  bottom: 120%;
+  left: 50%;
+  /* center the tooltip text box*/
+  transform: translate(-50%);
+  /* animation */
+  opacity: 0;
+  transition: opacity 1s;
+}
+#details .error-box-parent .error-box::after,
+#dashboard #accountForm .error-box-parent .error-box::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%);
+  border: 10px solid;
+  border-color:  rgb(242, 242, 242) transparent transparent transparent;
+  /* border-color: var(--gray-scale-gray-–-50); */
+}
+ #dashboard #accountForm .error-box-parent .active.error-box {
+  transform: translateY(100%);
+}
+
+#dashboard .billingSettings #accountForm .error-box-parent .active.error-box {
+  transform: translateY(160%);
+}

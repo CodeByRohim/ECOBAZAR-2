@@ -1,21 +1,7 @@
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoBazar</title>
-    <link rel="stylesheet" href="./css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/slick.css">
-    <link rel="stylesheet" href="./css/venobox.min.css">
-    <link rel="stylesheet" href="./css/styles.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./css/responsive.css">
-</head>
-
-<body>
 <?php include 'header.php';?>
-     <!-- POPUP WINDOW START -->
+
+     <!------- POPUP WINDOW START ------->
      <div id="popup" class="popup">
         <div class="popup-content">
           <span class="close-btn">&times;</span>
@@ -38,12 +24,10 @@
           </div>
         </div>
       </div>
-     <!-- POPUP WINDOW END -->
-    <!--* MAIN STARTS HERE -->
-    <main>
-        <!-- BANNER STARTS HERE -->
+     <!----- POPUP WINDOW END ------->
+   
+        <!------- BANNER STARTS HERE ------->
         <section id="banner">
-
             <div class="slider">
                 <div class="slide">
                     <div class="container">
@@ -114,9 +98,9 @@
             <button class="iconify-icon arrows rightArrows " id="bannerRightArrow"><iconify-icon
                     icon="pepicons-pencil:arrow-right" width="20" height="20"></iconify-icon></button>
         </section>
-        <!-- BANNER ENDS HERE -->
+        <!--------- BANNER ENDS HERE --------->
 
-       <!-- FIRST AND SECOND SECTION START -->
+       <!--------- FIRST AND SECOND SECTION START --------->
         <section id="first-section d-none d-lg-block"></section>
         <section id="hidden-section d-non d-lg-block">
             <div class="hidden-box">
@@ -148,7 +132,7 @@
                 </section> <!-- FOUR BOXES ENDS HERE -->
             </div>
         </section>
-        <!-- THIRD SECTION STARTS HERE -->
+        <!--------- THIRD SECTION STARTS HERE --------->
         <section id="third-section">
             <div class="container">
                 <div class="group-text">
@@ -477,9 +461,9 @@
                 </div>
             </div>
         </section>
-        <!-- THIRD SECTION ENDS HERE -->
+        <!---------THIRD SECTION ENDS HERE --------->
 
-        <!-- DRINK  SECTION STARTS HERE -->
+        <!--------- DRINK  SECTION STARTS HERE --------->
         <section id="drink">
             <div class="container d-none d-lg-block">
                 <div class="d-flex align-items-center justify-content-center gap-4 cnt">
@@ -515,7 +499,7 @@
                 </div>
             </div>
         </section>
-        <!-- SM DRINK SECTION STARTS HERE -->
+        <!--------- SM DRINK SECTION STARTS HERE --------->
         <div class="d-lg-none">
             <section id="drink">
                 <div class="container d-lg-none">
@@ -592,9 +576,9 @@
                 </div>
             </section>
         </div>
-        <!-- SM DRINK SECTION ENDS HERE -->
-        <!-- DRINK SECTION ENDS HERE -->
-        <!-- SPECIAL DEALS START HERE -->
+        <!--------- SM DRINK SECTION ENDS HERE --------->
+        <!--------- DRINK SECTION ENDS HERE --------->
+        <!--------- SPECIAL DEALS START HERE --------->
         <section id="specialDeals">
             <div class="d-flex align-items-center justify-content-center">
 
@@ -639,8 +623,8 @@
                 </div>
             </div>
         </section>
-        <!-- SPECIAL DEALS END HERE -->
-        <!-- FEUTURED PRODUCT START HERE -->
+        <!--------- SPECIAL DEALS END HERE --------->
+        <!--------- FEUTURED PRODUCT START HERE --------->
         <section id="feuturedProduct">
             <section id="third-section">
                 <div class="container">
@@ -836,8 +820,8 @@
                 </div>
             </section>
         </section>
-        <!-- FEUTURED PRODUCT END HERE -->
-        <!-- REVIEW SECTION START -->
+        <!--------- FEUTURED PRODUCT END HERE --------->
+        <!--------- REVIEW SECTION START --------->
         <section id="review">
             <div class="container ">
                 <h2>What our Clients Says</h2>
@@ -905,8 +889,8 @@
                 </section>
             </div>
         </section>
-        <!-- REVIEW SECTION END -->
-        <!--LATEST NEWS SECTION START -->
+        <!--------- REVIEW SECTION END --------->
+        <!---------LATEST NEWS SECTION START --------->
         <section id="latestNews">
             <h2>Latest News</h2>
             <div class="container">
@@ -958,139 +942,7 @@
                 </div>
             </div>
         </section>
-       <!--  LATEST NEWS SECTION END -->
-        <!-- NEWSLETTER SECTION START -->
-        <section id="newsletter">
-            <hr class="span">
-            <div class="container">
-                <div class="cntWrapper">
-                    <div class="row align-items-center">
-
-                        <div class="col-lg-3 logo text-center text-lg-start">
-                            <img class="img-fluid" src="./images/Logo.svg" alt="">
-                        </div>
-
-                        <div class="col-lg-4 text text-center text-lg-start">
-                            <h2 class="text-center text-lg-start">Subcribe our Newsletter</h2>
-                            <p>Pellentesque eu nibh eget mauris congue mattis matti.</p>
-                        </div>
-
-                        <div class="col-lg-5 inputField">
-                            <form action="formInput">
-                                <input type="email" placeholder="Your email address">
-                                <button type="submit">Subscribe</button>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- NEWSLETTER SECTION END -->
-        </section>
-        <!-- LATEST NEWS SECTION END -->
-        <!-- FOOTER SECTION START -->
-        <section id="footer">
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="wrapper">
-                            <!-- 3 -->
-                            <div class="col-lg-3">
-                                <h3 class="text-center text-lg-start">About Shopery</h3>
-                                <p class="text-center text-lg-start">
-                                    Morbi cursus porttitor enim lobortis molestie. Duis gravida turpis dui, eget
-                                    bibendum magna congue nec.
-                                </p>
-                                <h5 class="text-center text-lg-start"> (219) 555-0114<span
-                                        class="text-center">or</span>Proxy@gmail.com</h5>
-                            </div>
-                            <!-- 4 -->
-                            <div class="col-4 col-lg-2 mx- myAccount">
-                                <h3 class="text-center text-lg-start">My Account</h3>
-                                <ul class="text-center text-lg-start">
-                                    <li><a href="./dashboard.php">My Account</a></li>
-                                    <li><a href="./checkout.php">Order History</a></li>
-                                    <li><a href="./shopping cart.php">Shoping Cart</a></li>
-                                    <li><a href="./wishlist.php">Wishlist</a></li>
-                                    <li><a href="./dashboard.php">Settings</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-4 col-lg-2">
-                                <h3 class="text-center text-lg-start">Helps</h3>
-                                <ul class="text-center text-lg-start">
-                                    <li><a class="text-end text-lg-start" href="./contact.php">Contact</a></li>
-                                    <li><a class="text-end text-lg-start" href="#">Faqs</a></li>
-                                    <li><a class="text-end text-lg-start" href="#">Terms & Condition</a></li>
-                                    <li><a class="text-end text-lg-start" href="#">Privacy Policy</a></li>
-                                    <!-- <li><a href="#"></a></li>        -->
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-4">
-                                <h3>Proxy</h3>
-                                <ul>
-                                    <li><a href="./about.php">About</a></li>
-                                    <li><a href="./shop.php">Shop</a></li>
-                                    <li><a href="./productdetails.php">Product</a></li>
-                                    <li><a href="./productdetails.php">Products Details</a></li>
-                                    <li><a href="#">Track Order </a></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-3 mx- myAccount">
-                                <h3 class="">Instagram</h3>
-                                <ul class="d-flex flex-wrap justify-content-center justify-content-lg-start">
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/ins4.svg" alt=""></a></li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/ins5.svg" alt=""></a></li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/ins6.svg" alt=""></a></li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/Image(7).svg" alt=""></a>
-                                    </li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/Image(8).svg" alt=""></a>
-                                    </li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/Image(9).svg" alt=""></a>
-                                    </li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/Image(10).svg" alt=""></a>
-                                    </li>
-                                    <li><a href="#"><img class="img-fluid" src="./drink-img/Image(11).svg" alt=""></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <hr class="footerHr">
-
-                        <div class="social-payment">
-                            <div class="col-lg-4 social">
-                                <a href="#"><img class="img-fluid" src="./drink-img/facebook 1.svg" alt=""></a>
-                                <a href="#"><img class="img-fluid" src="./drink-img/twitter 1.svg" alt=""></a>
-                                <a href="#"><img class="img-fluid" src="./drink-img/pinterest 1.svg" alt=""></a>
-                                <a href="#"><img class="img-fluid" src="./drink-img/instagram 1.svg" alt=""></a>
-                            </div>
-                            <div class="col-lg-4">
-                                <p>Shopery eCommerce © 2021. All Rights Reserved</p>
-                            </div>
-                            <div class="col-4 payment text-end">
-                                <a href="#"><img class="img-fluid" src="./drink-img/Method=ApplePay.svg" alt=""></a>
-                                <a href="#"><img class="img-fluid" src="./drink-img/Method=Visa.svg" alt=""></a>
-                                <a href="#"><img class="img-fluid" src="./drink-img/Method=Discover.svg" alt=""></a>
-                                <a href="#"><img class="img-fluid" src="./drink-img/Method=Mastercard.svg" alt=""></a>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </footer>
-        </section>
-        <!-- FOOTER SECTION END -->
-       </main>
-       
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/jquery-3.7.1.min.js"></script>
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    <script src="./js/slick.min.js"></script>
-    <script src="./js/mixitup.min.js"></script>
-    <script src="./js/venobox.min.js"></script>
-    <script src="./js/jquery.countdown.min.js"></script>
-    <script src="./js/app.js"></script>
-</body>
-</html>
+       <!---------  LATEST NEWS SECTION END --------->
+        <!--------- FOOTER SECTION START --------->
+       <?php include 'footer.php'; ?>
+        <!--------- FOOTER SECTION END --------->

@@ -1,31 +1,24 @@
 
-<!DOCTYPE html>
-<html lang="en">
+     <?php 
+     session_start();
+     include 'header.php';
+     require "./database/env.php";
+     $query = "SELECT id, fname AS full_name, lname, email, phone FROM accountsettings ORDER BY id DESC";
+     $res = mysqli_query($conn, $query);
+     $accounts = mysqli_fetch_assoc($res);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoBazar</title>
-    <link rel="shortcut icon" href="./assets/img/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/slick.css">
-    <link rel="stylesheet" href="./css/venobox.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/contact.css">
-    <link rel="stylesheet" href="./css/productDetails.css">
-    <link rel="stylesheet" href="./css/checkout.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
-    <link rel="stylesheet" href="./css/wishlist.css">
-    <link rel="stylesheet" href="./css/responsive.css">
-    <link rel="stylesheet" href="./css/newsletter and footer.css">
-</head>
+    //  FETCH USER PROFILE IMAGE DATA
+    $sql = "SELECT image_name, image_path, uploaded_at FROM profileimages ORDER BY id DESC";
+    $resimg = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($resimg);
 
-<body>
-     <?php include 'header.php';?>
-    <!-- *Main PART START HERE -->
-    <main>
+    // FETCH USER PROFILE BILLING DATA
+    $queries ="SELECT id, fname, lname, email, street, country, states, zipcode, fullemail, phone FROM accountsettingsbills ORDER BY id DESC";
+    $resbills = mysqli_query($conn, $queries);
+    $rowbill = mysqli_fetch_assoc($resbills);
+    // var_dump($rowbill);
+?>                
+            
         <!-- Breadcrumbs Start Here -->
         <section id="Breadcrumbs">
             <div class="container">
@@ -52,7 +45,7 @@
             <div class="container">
                 <!-- Vertically centered scrollable modal -->
                 <!-- Trigger Button -->
-                <button type="button" class="btn btn-primary d-lg-none d-block smTrigerBtn" data-bs-toggle="modal"
+                <button type="button" class="btn btn-primary d-lg-none d-block    smTrigerBtn" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     <i class="fa-solid fa-grip"></i>
                 </button>
@@ -148,32 +141,37 @@
                                 <!-- profilePic start -->
                                 <div class="profilePic col-12 col-lg-6">
                                     <div class="profileImg">
-                                        <img class="img-fluid" src="./images/Ellipse 5.png" alt="">
+                                        <!-- <img class="img-fluid" src="./images/Ellipse 5.png" alt=""> -->
+                                        <img style="width: 120px; height:120px" class="img-fluid rounded-circle" src="controller/<?= $row['image_path'] ?>" alt="<?= $row['image_name'] ?>">
                                     </div>
                                     <div class="profileText">
-                                        <h3>John Doe</h3>
+                                        <h3><?= $accounts['full_name'] . '' ?> <?= $accounts['lname'] .'' ?></h3>
                                         <p>Customer</p>
-                                        <h6>Edit Profile</h6>
+                                        
+                                        <a class="nav-link active" href="#v-pills-settings" data-bs-toggle="pill">
+                                            <h6>Edit Profile</h6>
+                                        </a>
+                                        <!-- <a href="./controller/AccountDeleteController.php?id=  $accounts['id']?>">delete</a> --> 
                                     </div>
                                 </div>
                                 <!-- profilePic end -->
                                 <!-- Bill address start -->
                                 <div class="billAddress col-12 col-lg-6">
                                     <h4>Billing Address</h4>
-                                    <h3>Dainne Russell</h3>
+                                    <h3><?= $rowbill['fname'] . ''?> <?= $rowbill['lname'] . ''?></h3>                           
+                                                       
                                     <div class="billAdd">
                                         <div class="billAdd1">
-                                            <p>4140 Parker Rd. Allentown, New Mexico 31134</p>
+                                            <p><?= $rowbill['zipcode'] . ''?> <?= $rowbill['street'] . ''?> <?= $rowbill['states'] . ''?>, <?= $rowbill['country'] . ''?> 31134</p>
                                         </div>
-                                        <div class="billAdd2">
-                                      <?php  $email = htmlspecialchars($_POST['email'] ?? ''); ?>
-                                            <a href="tel:dainne.ressell@gmail.com" class=""></a>
+                                        <div class="billAdd2">                                     
+                                            <a href="tel:<?= $rowbill['fullemail'] . ''?> " class=""><?= $rowbill['fullemail'] . ''?></a>
                                         </div>
                                         <div class="billAdd3">
-                                            <p><a href="tel:(671) 555-0110">(671) 555-0110</a></p>
+                                            <p><a href="tel:<?= $rowbill['phone'] . ''?>"><?= $rowbill['phone'] . ''?></a></p>
                                         </div>
                                         <div class="billAdd4">
-                                            <p><a href="#">Edit Address</a></p>
+                                            <p><a class="nav-link active" href="#v-pills-settings" data-bs-toggle="pill">Edit Address</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -627,104 +625,122 @@
                             aria-labelledby="v-pills-settings-tab">
                             <div class="settings">
                                 <!-- <div class="settingsWrapper"> -->
-                                <div class="accountSettings">
+                            <div class="accountSettings">
                                     <h2>Account Settings</h2>
                                     <hr>
-                                    <div class="formWrapper">
-                                        <div class="name order-2 order-lg-1 col-lg-7">
-                                            <form action="">
-                                                <div class="form-group">
+                                     <div class="formWrapper">
+                                <div class="name order-2 order-lg-1 col-lg-7">
+                                    <form action="./controller/AccountPrStoreController.php" method="post" id="accountForm" enctype="multipart/form-data">
+                                            <input type="hidden" name="id" value="<?= $accounts['id'] ?>">
+                                                <div class="form-group error-box-parent">
                                                     <label for="exampleInputEmail1">First Name</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                                    <input type="text" class="form-control <?= getErrorClass('fname_error') ?>" value="<?= $_SESSION['old']['fname'] ?? '' ?>" name="fname" id="exampleInputEmail1"
                                                         aria-describedby="emailHelp" placeholder="Dianne">
+                                                        <span class=" <?= getActiveClass('fname_error') ?> error-box"><?= $_SESSION['errors']['fname_error'] ?? '' ?></span>                                                           
                                                 </div>
-                                                <div class="form-group">
+
+                                                <div class="form-group error-box-parent">
                                                     <label for="exampleInputEmail2">Last Name</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail2"
+                                                    <input type="text" class="form-control <?= getErrorClass('lname_error') ?>" value="<?= $_SESSION['old']['lname'] ?? '' ?>" name="lname" id="exampleInputEmail2"
                                                         aria-describedby="emailHelp" placeholder="Russell">
+                                                        <span class=" <?= getActiveClass('lname_error') ?> error-box"><?= $_SESSION['errors']['lname_error'] ?? '' ?></span>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail3">Email</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail3"
+                                                <div class="form-group error-box-parent">
+                                                    <label for="exampleInputEmail3">Email</label>                                                   
+                                                    <input type="email" class="form-control <?= getErrorClass('email_error') ?>" value="<?= $_SESSION['old']['email'] ?? null ?>" name="email" id="exampleInputEmail3"
                                                         aria-describedby="emailHelp"
                                                         placeholder="dianne.russel@gmail.com">
+                                                        <span class="<?= getActiveClass('email_error') ?> error-box"><?= $_SESSION['errors']['email_error'] ?? '' ?></span>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group error-box-parent">
                                                     <label for="exampleInputEmail4">Phone Number</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail4"
+                                                    <input type="number" class="form-control <?= getErrorClass('phone_error') ?>" value="<?= $_SESSION['old']['phone'] ?? null ?>" name="phone" id="exampleInputEmail4"
                                                         aria-describedby="emailHelp" placeholder="(603) 555-0123">
+                                                        <span class="<?= getActiveClass('phone_error') ?> error-box"><?= $_SESSION['errors']['phone_error'] ?? '' ?></span>
                                                 </div>
-                                            </form>
-                                            <button>Save Changes</button>
+                                               <button name="submit" type="submit">Save Changes</button>                                                                                                                             
                                         </div>
-                                        <div class="photo order-1 order-lg-2 col-lg-5">
-                                            <img class="img-fluid" src="./images/Ellipse 5.png" alt="">
-                                            <div class="mb-3">
-                                                <!-- <label for="formFile" class="form-label"></label> -->
-                                                <input class="fileIn form-control" type="file" id="formFile">
+
+                                        <div class="photo order-1 order-lg-2 col-lg-5">                                                                             
+                                        <img  class="img-fluid" src="controller/<?= $row['image_path'] ?>" alt="<?= $row['image_name'] ?>">                                        
+                                            <!-- src="./images/Ellipse 5.png" -->
+                                            <div class="mb-3">                            
+                                                <input class="fileIn form-control" type="file" name="image" id="image">          
+                                                       
+                                                </form>
                                             </div>
                                         </div>
-                                    </div>
-
+                                </div>                                     
                                 </div>
+                                
                                 <div class="billingSettings">
                                     <h2>Billing Address</h2>
                                     <hr>
                                     <div class="billWrapper">
-                                        <form action="">
+                                        <!-- <form class="validation-form" action="./controller/AccountBillingController.php" method="post" id="accountForm" enctype="multipart/form-data"> -->
+                                        <form action="./controller/AccountBillingController.php" method="post" id="accountForm">
                                             <div class="nameWrap">
-                                                <div class="form-group">
+                                                <div class="form-group error-box-parent">
                                                     <label for="exampleInput1">First Name</label>
-                                                    <input type="text" class="form-control" id="exampleInput1"
+                                                    <input name="bfname" type="text" class="form-control <?= getErrorClass('bfname_error') ?>" value="<?= $_SESSION['old']['bfname'] ?? null ?>" id="exampleInput1"
                                                         aria-describedby="emailHelp" placeholder="Dianne">
+                                                        <span class="<?= getActiveClass('bfname_error') ?> error-box"><?= $_SESSION['errors']['bfname_error'] ?? '' ?></span>    
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group error-box-parent">
                                                     <label for="exampleInput2">Last Name</label>
-                                                    <input type="text" class="form-control" id="exampleInput2"
+                                                    <input name="blname" type="text" class="form-control <?= getErrorClass('blname_error') ?>" value="<?= $_SESSION['old']['blname'] ?? null ?>" id="exampleInput2"
                                                         aria-describedby="emailHelp" placeholder="Russell">
+                                                        <span class="<?= getActiveClass('blname_error') ?> error-box"><?= $_SESSION['errors']['blname_error'] ?? '' ?></span>  
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group error-box-parent">
                                                     <label for="exampleInput3">Email</label>
-                                                    <input type="text" class="form-control" id="exampleInput3"
+                                                    <input name="bemail" type="text" class="form-control <?= getErrorClass('bemail_error') ?>" value="<?= $_SESSION['old']['bemail'] ?? null ?>" id="exampleInput3"
                                                         aria-describedby="emailHelp" placeholder="zakirsoft">
+                                                        <span class="<?= getActiveClass('bemail_error') ?> error-box"><?= $_SESSION['errors']['bemail_error'] ?? '' ?></span>
                                                 </div>
                                             </div>
-                                            <div class="streetAddress form-group">
+                                            <div class="streetAddress form-group error-box-parent">
                                                 <label for="exampleInput4">Street Address</label>
-                                                <input type="text" class="form-control" id="exampleInput4"
+                                                <input name="bstreet" type="text" class="form-control <?= getErrorClass('bstreet_error') ?>" value="<?= $_SESSION['old']['bstreet'] ?? null ?>" id="exampleInput4"
                                                     aria-describedby="emailHelp" placeholder="4140 Par|">
+                                                    <span class="<?= getActiveClass('bstreet_error') ?> error-box"><?= $_SESSION['errors']['bstreet_error'] ?? '' ?></span>
                                             </div>
                                             <div class="countryWrap">
-                                                <div class="form-group">
-                                                    <label for="exampleInput4">Country / Region</label>
-                                                    <input type="text" class="form-control" id="exampleInput4"
+                                                <div class="form-group error-box-parent">
+                                                    <label for="exampleInput5">Country / Region</label>
+                                                    <input name="bcountry" type="text" class="form-control <?= getErrorClass('bcountry_error') ?>" value="<?= $_SESSION['old']['bcountry'] ?? null ?>" id="exampleInput5"
                                                         aria-describedby="emailHelp" placeholder="United State">
+                                                        <span class="<?= getActiveClass('bcountry_error') ?> error-box"><?= $_SESSION['errors']['bcountry_error'] ?? '' ?></span>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInput5">States</label>
-                                                    <input type="text" class="form-control" id="exampleInput5"
+                                                <div class="form-group error-box-parent">
+                                                    <label for="exampleInput6">States</label>
+                                                    <input name="bstates" type="text" class="form-control <?= getErrorClass('bstates_error') ?>" value="<?= $_SESSION['old']['bstates'] ?? null ?>" id="exampleInput6"
                                                         aria-describedby="emailHelp" placeholder="New Mexico">
+                                                        <span class="<?= getActiveClass('bstates_error') ?> error-box"><?= $_SESSION['errors']['bstates_error'] ?? '' ?></span>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInput6">Zip Code</label>
-                                                    <input type="text" class="form-control" id="exampleInput6"
+                                                <div class="form-group error-box-parent">
+                                                    <label for="exampleInput7">Zip Code</label>
+                                                    <input name="bzipcode" type="text" class="form-control <?= getErrorClass('bzipcode_error') ?>" value="<?= $_SESSION['old']['bzipcode'] ?? null ?>" id="exampleInput7"
                                                         aria-describedby="emailHelp" placeholder="31134">
+                                                        <span class="<?= getActiveClass('bzipcode_error') ?> error-box"><?= $_SESSION['errors']['bzipcode_error'] ?? '' ?></span>  
                                                 </div>
                                             </div>
                                             <div class="email-phone">
-                                                <div class="form-group">
-                                                    <label for="exampleInput7">Email</label>
-                                                    <input type="text" class="form-control" id="exampleInput7"
+                                                <div class="form-group error-box-parent">
+                                                    <label for="exampleInput8">Email</label>
+                                                    <input name="bfullemail" type="text" class="form-control <?= getErrorClass('bfullemail_error') ?>" value="<?= $_SESSION['old']['bfullemail'] ?? null ?>" id="exampleInput8"
                                                         aria-describedby="emailHelp"
                                                         placeholder="dianne.russel@gmail.com">
+                                                        <span class="<?= getActiveClass('bfullemail_error') ?> error-box"><?= $_SESSION['errors']['bfullemail_error'] ?? '' ?></span>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInput8">Phone</label>
-                                                    <input type="text" class="form-control" id="exampleInput8"
+                                                <div class="form-group error-box-parent">
+                                                    <label for="exampleInput9">Phone</label>
+                                                    <input name="bphone" type="text" class="form-control <?= getErrorClass('bphone_error') ?>" value="<?= $_SESSION['old']['bphone'] ?? null ?>" id="exampleInput9"
                                                         aria-describedby="emailHelp" placeholder="(603) 555-0123">
+                                                        <span class="<?= getActiveClass('bphone_error') ?> error-box"><?= $_SESSION['errors']['bphone_error'] ?? '' ?></span>
                                                 </div>
                                             </div>
-                                            <button>Save Changes</button>
+                                            <button type="submit" name="bill">Save Changes</button>
                                         </form>
                                     </div>
                                 </div>
@@ -732,12 +748,12 @@
                                     <h2>Change Password</h2>
                                     <hr>
                                     <div class="passwordWrapper">
-                                        <form action="">
+                                        <form action="./controller/AccountBillingController.php" method="post">
                                             <div class="form-group formGroup  formGroupPassword">
-                                                <label for="exampleInput9">Current Password</label>                                               
+                                                <label for="exampleInput10">Current Password</label>                                               
                                                 <div>
                                                     <input class="password form-control" type="password"
-                                                        id="exampleInput9" aria-describedby="emailHelp"
+                                                        id="exampleInput10" aria-describedby="emailHelp"
                                                         placeholder="Password">
                                                     <button type="button" class="passwordToggler"><i
                                                             class="bi bi-eye-slash"></i></button>
@@ -745,26 +761,27 @@
                                             </div>
                                             <div class="new-confirm">
                                                 <div class="formGroup formGroupPassword">
-                                                    <label for="exampleInput10">New Password</label>
+                                                    <label for="exampleInput11">New Password</label>
                                                     <div>
                                                         <input class="password form-control" type="password"
-                                                            id="exampleInput10" aria-describedby="emailHelp"
+                                                            id="exampleInput11" aria-describedby="emailHelp"
                                                             placeholder="Password">
                                                         <button type="button" class="passwordToggler"><i
                                                                 class="bi bi-eye-slash"></i></button>
                                                     </div>
                                                 </div>
                                                 <div class="formGroup formGroupPassword">
-                                                    <label for="exampleInput11">Confirm Password</label>
+                                                    <label for="exampleInput12">Confirm Password</label>
                                                     <div>
                                                         <input class="password form-control" type="password"
-                                                            id="exampleInput11" aria-describedby="emailHelp"
+                                                            id="exampleInput12" aria-describedby="emailHelp"
                                                             placeholder="Confirm Password">
                                                         <button type="button" class="passwordToggler"><i
                                                                 class="bi bi-eye-slash"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -772,43 +789,14 @@
                         <!-- LOGOUT -->
                         <div class="tab-pane fade" id="v-pills-logOut" role="tabpanel"
                             aria-labelledby="v-pills-logOut-tab">
-                            <p class="">logout Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-                                commodi nobis cupiditate exercitationem quae blanditiis. Lorem ipsum dolor sit amet
-                                consectetur, adipisicing elit. Minus, rerum!</p>
+                           <button class="btn btn-primary" id="logout">Logout</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Dashboard End Here -->
-
-        <!-- *MAIN CONTENT ENDS HERE -->
-        <?php include 'footer.php';?>
-    </main>
-    <script>
-        let passwordTogglers = document.querySelectorAll(".passwordToggler");
-        function passwordShow(event) {
-            let toggler = event.currentTarget;
-            let passwordInput = toggler.closest(".formGroup").querySelector(".password");
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                toggler.innerHTML = '<i class="bi bi-eye"></i>';
-            } else {
-                passwordInput.type = "password";
-                toggler.innerHTML = '<i class="bi bi-eye-slash"></i>';
-            }
-        }
-        passwordTogglers.forEach(toggler => {
-            toggler.addEventListener("click", passwordShow);
-        });
-    </script>
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/jquery-3.7.1.min.js"></script>
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    <script src="./js/slick.min.js"></script>
-    <script src="./js/mixitup.min.js"></script>
-    <script src="./js/venobox.min.js"></script>
-    <script src="./js/app.js"></script>
-    <!-- <script src="./js/header and footer.js"></script> -->
-</body>
-</html>
+        <?php 
+        include 'footer.php';
+        session_unset();
+        ?>

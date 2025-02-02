@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
@@ -18,7 +18,7 @@
    <link rel="stylesheet" href="./css/newsletter and footer.css">
 </head>
 
-<body>
+<body> -->
     <?php include 'header.php';?>
     <!-- *Main PART START HERE -->
      <main>
@@ -41,7 +41,7 @@
      <!-- Breadcrumbs End Hear -->
 
      <!-- Details Products Start Here -->
-     <section id="productDetails">
+      <section id="productDetails">
         <div class="container">
           <div class="row">
             <!-- Left Side -->
@@ -353,7 +353,7 @@
                 <div class="row shopProduct">
                     <!-- Product Cards -->
                    <!-- THIRD SECTION STARTS HERE -->
-        <section id="third-section">
+         <section id="third-section">
 
                 <div class="row mixit justify-content-between">
                     <!-- product 1 start -->
@@ -515,8 +515,8 @@
 
 
      <!-- *MAIN CONTENT ENDS HERE -->
+     </main>
  <?php include 'footer.php';?>
-</main>
 <script src="./js/bootstrap.bundle.min.js"></script>
 <script src="./js/jquery-3.7.1.min.js"></script>
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>

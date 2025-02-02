@@ -1,26 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoBazar </title>
-    <link rel="stylesheet" href="./css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/slick.css">
-    <link rel="stylesheet" href="./css/venobox.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/contact.css">
-    <link rel="stylesheet" href="./css/shop.css">
-    <link rel="stylesheet" href="./css/responsive.css">
-    <link rel="stylesheet" href="./css/newsletter and footer.css">
-</head>
-
-<body>
 <?php include 'header.php';?>
-<!-- *MAIN CONTENT START HERE -->
-
  <!-- Breadcrumbs Start Here -->
  <section id="Breadcrumbs">
    <div class="container">
@@ -950,71 +929,71 @@
 <?php include 'footer.php';?>
 </main>
 <Script>
-let faqs = document.querySelectorAll(".faq");
-function toggleFAQ(event){
-for (faq of faqs){
-   faq.classList.remove('active');
-}
-event.currentTarget.classList.toggle("active");
-}
-for (faq of faqs){
-faq.addEventListener('click',toggleFAQ);
-}
+// let faqs = document.querySelectorAll(".faq");
+// function toggleFAQ(event){
+// for (faq of faqs){
+//    faq.classList.remove('active');
+// }
+// event.currentTarget.classList.toggle("active");
+// }
+// for (faq of faqs){
+// faq.addEventListener('click',toggleFAQ);
+// }
 
-// PRICE RANGE START
-const rangeInput = document.querySelectorAll(".range-input input"),
-  priceInput = document.querySelectorAll(".price-input input"),
-  range = document.querySelector(".slider .progress");
-let priceGap = 1000;
+// // PRICE RANGE START
+// const rangeInput = document.querySelectorAll(".range-input input"),
+//   priceInput = document.querySelectorAll(".price-input input"),
+//   range = document.querySelector(".slider .progress");
+// let priceGap = 1000;
 
-priceInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    let minPrice = parseInt(priceInput[0].value),
-      maxPrice = parseInt(priceInput[1].value);
+// priceInput.forEach((input) => {
+//   input.addEventListener("input", (e) => {
+//     let minPrice = parseInt(priceInput[0].value),
+//       maxPrice = parseInt(priceInput[1].value);
 
-    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
-      if (e.target.className === "input-min") {
-        rangeInput[0].value = minPrice;
-        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
-      } else {
-        rangeInput[1].value = maxPrice;
-        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
-      }
-    }
-  });
-});
+//     if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+//       if (e.target.className === "input-min") {
+//         rangeInput[0].value = minPrice;
+//         range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+//       } else {
+//         rangeInput[1].value = maxPrice;
+//         range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+//       }
+//     }
+//   });
+// });
 
-rangeInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    let minVal = parseInt(rangeInput[0].value),
-      maxVal = parseInt(rangeInput[1].value);
+// rangeInput.forEach((input) => {
+//   input.addEventListener("input", (e) => {
+//     let minVal = parseInt(rangeInput[0].value),
+//       maxVal = parseInt(rangeInput[1].value);
 
-    if (maxVal - minVal < priceGap) {
-      if (e.target.className === "range-min") {
-        rangeInput[0].value = maxVal - priceGap;
-      } else {
-        rangeInput[1].value = minVal + priceGap;
-      }
-    } else {
-      priceInput[0].value = minVal;
-      priceInput[1].value = maxVal;
-      range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-      range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-    }
-  });
-});
+//     if (maxVal - minVal < priceGap) {
+//       if (e.target.className === "range-min") {
+//         rangeInput[0].value = maxVal - priceGap;
+//       } else {
+//         rangeInput[1].value = minVal + priceGap;
+//       }
+//     } else {
+//       priceInput[0].value = minVal;
+//       priceInput[1].value = maxVal;
+//       range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+//       range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+//     }
+//   });
+// });
 
-// PRICE RANGE END
-// FILTER START
-const toggleButton = document.getElementById("toggleButton");
-const leftContent = document.getElementById("leftContent");
-const leftHeader = document.getElementById("leftHeader");
-leftHeader.addEventListener("click", () => {
-    leftContent.classList.remove("show");
-});
-toggleButton.addEventListener("click", () => {
-    leftContent.classList.toggle("show");
-});
+// // PRICE RANGE END
+// // FILTER START
+// const toggleButton = document.getElementById("toggleButton");
+// const leftContent = document.getElementById("leftContent");
+// const leftHeader = document.getElementById("leftHeader");
+// leftHeader.addEventListener("click", () => {
+//     leftContent.classList.remove("show");
+// });
+// toggleButton.addEventListener("click", () => {
+//     leftContent.classList.toggle("show");
+// });
 
 </Script>
 <script src="./js/bootstrap.bundle.min.js"></script>
